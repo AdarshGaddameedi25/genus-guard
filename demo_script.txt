@@ -1,0 +1,39 @@
+# GENO-CLARITY: Live Demonstration Guide
+
+Welcome to the live demo of GENO-CLARITY. This guide is tailored for both technical and clinical judges.
+
+## Prerequisites
+1. Ensure the Node.js server is running (`npm run dev`).
+2. Have the `test_data.vcf` file ready on your desktop.
+3. Obtain a valid GROQ API Key in the `.env` file (if you want live LLM generation).
+
+---
+
+## Step 1: Privacy & Consent Wall
+*What to say:* "GENO-CLARITY prioritizes patient security. Before any genomic data touches the system, the client must explicitly acknowledge our Zero File Persistence policy. Data is parsed strictly in-memory over Vercel Edge compute."
+*Action:* Check all three consent boxes to proceed.
+
+## Step 2: The Upload Experience
+*What to say:* "We engineered an edge-compatible VCF parser. Instead of relying on heavy Python backends or cloud storage buckets, our system decrypts and parses the VCF in milliseconds directly within the serverless memory."
+*Action:* Drag and drag `test_data.vcf` onto the dropzone. Click 'Analyze'.
+
+## Step 3: Patient Dashboard (UI/UX Review)
+*What to say:* "As the results load, we are presented first with the Patient Dashboard. Note the use of accessible emojis, clear color coding, and plain-language analogies ('Speed Bumps Ahead' vs 'Roadblock'). Medical jargon is replaced by 'What this means for me' generated contextually by our integrated Groq LLaMA3 agent."
+*Action:* Scroll down. Focus on **Codeine** (shows RED for Ineffective) and **Fluorouracil** (shows RED for Toxic).
+*Context:* Codeine requires CYP2D6 to convert to morphine. The VCF has rs3892097 T/T (Poor metabolizer), meaning codeine does nothing. Fluorouracil has rs3918290 A/A (DPYD Poor Metabolizer), meaning 5-FU would be fatal.
+
+## Step 4: The Innovation - Digital Twin
+*What to say:* "By scrolling down, we interact with the Pharmacological Digital Twin. This WebAssembly-accelerated math model charts a mock 24-hour plasma concentration graph. If you select Fluorouracil, notice how the curve quickly penetrates the 'Toxicity' ceiling and stays there because the patient's DPYD enzyme cannot clear it."
+*Action:* Select different drugs from the dropdown and click 'Re-run Simulation' to watch the lines animate.
+
+## Step 5: Clinical View Toggle
+*What to say:* "A doctor needs different data points than a patient. Next to the GCI Badge at the top, we toggle to 'Clinical View'."
+*Action:* Click 'Clinical View' at the top right.
+*What to say:* "The dashboard instantly switches to a highly dense, CPIC-aligned table mapping rsIDs, exact diplotypes (e.g., *4/*4), phenotypes, and evidence grading. Below it, the Groq API provides deep pathway summaries for the physician."
+
+## Step 6: Export & Audit
+*What to say:* "Finally, this tool integrates directly into modern EHRs. We can download the structured JSON object which strictly conforms to FHIR-like interoperability schemas."
+*Action:* Click 'Download JSON Report'. Provide a brief glimpse at the downloaded file to show the structured schema output.
+
+---
+**End Demo.**
